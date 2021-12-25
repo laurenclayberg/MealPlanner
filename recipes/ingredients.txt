@@ -1,18 +1,35 @@
 --- Produce ---
+yellow onion
+scallion
 
 --- Dairy ---
+butter
+cream cheese
 
 --- Meat ---
+boneless chicken breast
 
 --- Baked Goods ---
 
 --- Spices ---
+smoked paprika
+dried oregano
+dried thyme
+garlic powder
+onion powder
+cayenne pepper
+black pepper
+salt
 
 --- Baking ---
 
 --- International Isle ---
+fire roasted tomatoes
+chicken broth
+penne pasta
 
 --- Condiments ---
+olive oil
 
 --- Frozen ---
 
