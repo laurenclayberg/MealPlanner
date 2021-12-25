@@ -1,0 +1,34 @@
+<Recipe name>
+
+--- Time ---
+<X>hr <Y>min
+
+--- Servings ---
+<serving count>
+
+--- Category ---
+<insert>, <categories>, <with>, <comma>, <spacing>
+
+--- Instructions ---
+1. instruction 1
+2. instruction 2
+3. continue the instructions
+4. by numbering each in order
+
+--- Ingredients ---
+<item>, <count>, <size>, <literal amount>
+<item2>, <count2>, <size2>, <literal amount2>
+
+--- Substitutes ---
+<item>, <substitute>
+
+--- Rating ---
+<rating>
+
+--- Advance ---
+<days>
+1. first thing you can prep in advance
+2. second thing to prep in advance
+
+--- Credit ---
+link or where the recipe is from
