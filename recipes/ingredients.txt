@@ -1,6 +1,10 @@
 --- Produce ---
 yellow onion
 scallion
+garlic
+bay leaf
+sweet potato
+cilantro
 
 --- Dairy ---
 butter
@@ -8,23 +12,32 @@ cream cheese
 
 --- Meat ---
 boneless chicken breast
+ground turkey
+ground beef
+ground chicken
+ground pork
 
 --- Baked Goods ---
 
 --- Spices ---
 smoked paprika
+paprika
 dried oregano
 dried thyme
 garlic powder
 onion powder
+chili powder
 cayenne pepper
 black pepper
 salt
+cumin
 
 --- Baking ---
 
 --- International Isle ---
 fire roasted tomatoes
+mild tomatoes with green chilies
+tomato sauce can
 chicken broth
 penne pasta
 
@@ -34,3 +47,6 @@ olive oil
 --- Frozen ---
 
 --- Alcohol ---
+beer
+red wine
+white wine
