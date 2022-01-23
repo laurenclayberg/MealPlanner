@@ -1,14 +1,27 @@
-class MealEnum:
-    # todo
+from enum import Enum
 
-class CuisineEnum:
-    # todo
+class MealEnum(Enum):
+    DINNER = "dinner"
+    LUNCH = "lunch"
+    BREAKFAST = "breakfast"
+    SNACK = "snack"
 
-class MeasurementEnum:
-    # todo
+class CuisineEnum(Enum):
+    AMERICAN = "american"
+    ITALIAN = "italian"
+    MEXICAN = "mexican"
+    INDIAN = "indian"
 
-class IsleEnum:
-    # todo
+class IsleEnum(Enum):
+    PRODUCE = "produce"
+    DELI = "deli"
+    MEAT = "meat"
+    DAIRY = "dairy"
+    BAKERY = "bakery"
+    BAKING = "baking"
+    INTERNATIONAL = "international"
+    CONDIMENTS = "condiments"
 
-class LabelEnum:
-    # todo
+class LabelEnum(Enum):
+    INSTANT_POT = "instant_pot"
+    GRILL = "grill"
