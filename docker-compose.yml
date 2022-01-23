@@ -9,10 +9,22 @@ services:
     environment:
       FLASK_APP: api
       FLASK_ENV: development
+      PSQL_HOST: database
+      PSQL_USER: postgres
+      PSQL_PASS: mealplannerpsqlpass
+      PSQL_DB:   postgres
     command:
       - pipenv
       - run
       - flask
       - run
       - --host=0.0.0.0
-
+    links:
+      - database
+  database:
+    image: postgres:14.1
+    environment:
+      POSTGRES_PASSWORD: mealplannerpsqlpass
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data
