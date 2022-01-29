@@ -7,26 +7,56 @@ At some point I plan on storing the recipes in an actual database, but for now a
 { 
   "id": "example id",
   "name": "example name",
-  "credit": "example credit",
+  "source": "example source URL",
   "time": 30,
   "servings": 2,
   "rating": 4,
-  "meal_categories": [ "category 1", "category 2" ],
-  "cuisine_categories": [ "category 3" ],
-  "custom_categories": [ "category 4" ],
+  "tags": [ "category 1", "category 2", "cuisine 1" ],
   "instructions": [ "instruction 1", "instruction 2" ],
+  "ingredients": [
+    {
+        "ingredient": "salt",
+        "quantity": 1,
+        "unit": "tsp",
+    },
+    {
+        "ingredient": "water",
+        "quantity": 1.5,
+        "unit": "cup",
+    },
+  ]
+}
+
+// Eventually:
+{
   "advance_prep": [ "prep 1" ],
   "advance_prep_max_days": 3,
-  "ingredients": {
-    "ingredient 1 id": [ 8, "oz" ],
-    "ingredient 2 id": [ 1.5, "cup"]
-  },
-  "substitutes": {
-    "ingredient 1": [ "alternative 1", "alternative 2" ],
-    "ingredient 2": [ "alternative 3" ]
-  }
+  "ingredients": [
+    {
+        "ingredient": "salt",
+        "quantity": 1,
+        "unit": "tsp",
+        // Outer is "or", inner is "and"
+        "alternates": [
+            [
+                {
+                    "ingredient": "sugar",
+                    "quantity": 1,
+                    "unit": "tsp",
+                }
+            ]
+        ]
+    },
+    {
+        "ingredient": "water",
+        "quantity": 1.5,
+        "unit": "cup",
+    },
+  ]
 }
 ```
+
+
 Time is designated in minutes. Rating is a score 1 to 5 with 5 being the best.
 ## Ingredient Schema
 ```json
