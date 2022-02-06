@@ -15,13 +15,12 @@ def welcome():
 
 @app.route('/ingredients', methods = ['POST', 'GET'])
 def ingredients():
-    if request.method == 'POST':
-        # Create a new ingredient
-        raise NotImplementedError
-    elif request.method == 'GET':
+    if request.method == 'GET':
         # Search list of ingredients, potentially filtered by the query parameters
         # No query results in querying all ingredients
         query = request.args.get('q')
+        raise NotImplementedError
+    elif request.method == 'POST':
         raise NotImplementedError
     else:
         raise NotImplementedError
@@ -97,29 +96,19 @@ def recipes():
         conn.commit()
         cur.close()
 
-        return get_formatted_recipe(db, recipe_id)
+        return get_formatted_recipe(db, recipe_id), 200
     elif request.method == 'GET':
         # Get list of recipes, potentially filtered by the query parameter
         # No query results in querying all recipes
         query = request.args.get('q')
         if query:
-            raise NotImplementedError
-        cur = db().cursor()
-        cur.execute("""
-            SELECT
-                r.pubid as id,
-                r.time,
-                r.servings,
-                r.instructions,
-                r.source,
-                r.rating
-            FROM recipes AS r
-            ORDER BY r.created DESC;
-            """)
-        app.logger.debug(str(cur.fetchall()))
-        raise NotImplementedError
+            return "Query parameters not supported", 400
+        
+        recipes = get_all_formatted_recipes(db)
+
+        return {"recipes": recipes}, 200
     else:
-        raise NotImplementedError
+        return "Bad request", 405
 
 @app.route('/recipe/<recipe_id>', methods = ['GET', 'PUT', 'DELETE'])
 def recipe(recipe_id):
