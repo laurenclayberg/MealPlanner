@@ -1,5 +1,14 @@
 import random
 
+'''
+TODO
+Generate meal plan
+- Include specific recipe IDs to include
+- Allow fish/red meat/vegetarian limits
+- Allow include specific ingredients
+- Disallow changing servies of certain recipes (ex. lasagna)
+'''
+
 class PlannerParams:
 
     def __init__(self):
@@ -41,15 +50,25 @@ def generate_meal_plan(recipes, planner_params):
 
     return [recipes[i] for i in recipe_selection]
 
-def generate_grocery_list(recipes):
+def generate_grocery_list(recipes, ingredient_locations):
     ''' Create a grocery list from a list of recipes
 
-        Returns: a list of nonrepeating ingredients and their quantities
+        recipes: A list of recipes
+        ingredient_locations: A map of ingredients to locations
+
+        Returns: a list of nonrepeating ingredients sorted by store location
             [{
-                ingredient: <name>,
-                quantity: <quantity>
+                location: <store location>
+                items: [
+                    {
+                        ingredient: <name>,
+                        quantity: <quantity>
+                        unit: <unit>
+                    }, {...}
+                ]
             }, {...}]
     '''
+    # Combine ingredients from the recipes
     ingredients = {} # map of {<ingredient name>: [float, unit]}
 
     for recipe in recipes:
@@ -69,4 +88,21 @@ def generate_grocery_list(recipes):
                     # units do not match, so need to do a conversion
                     raise NotImplementedError
 
-    return ingredients
+    # Generate the grocery list sorted by store location
+    grocery_list = {}
+    for ingredient in ingredients.keys():
+        item_quantity = ingredients[ingredient][0]
+        item_unit = ingredients[ingredient][1]
+        item_entry = {'ingredient': ingredient, 'quantity': item_quantity, 'unit': item_unit}
+
+        location = ingredient_locations[ingredient]
+        if location == None:
+            location = 'UNKNOWN'
+        if location not in grocery_list:
+            grocery_list[location] = [item_entry]
+        else:
+            grocery_list[location].append(item_entry)
+
+    grocery_list = [{'location': k, 'items': v} for (k,v) in grocery_list.items()]
+
+    return grocery_list

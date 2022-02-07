@@ -131,13 +131,14 @@ def meal_planner_generate_plan():
         supplied criteria
     '''
     if request.method == 'POST':
-        planner_params = PlannerParams() # TODO - parse from the user
+        planner_params = PlannerParams() # TODO - parse parameters from the user
         if not verify_parameters(planner_params):
             return "Conflicting meal planner parameters", 400
 
         recipes = get_all_formatted_recipes(db)
+        ingredients = get_all_ingredients_with_location(db)
         meal_plan = generate_meal_plan(recipes, PlannerParams())
-        grocery_list = generate_grocery_list(meal_plan)
+        grocery_list = generate_grocery_list(meal_plan, ingredients)
 
         return {"grocery_list": grocery_list, "meal_plan": meal_plan}, 200
     else:

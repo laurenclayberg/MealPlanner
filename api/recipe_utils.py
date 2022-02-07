@@ -54,3 +54,21 @@ def get_all_formatted_recipes(db):
     recipe_ids = get_all_recipe_ids(db)
     recipes = [get_formatted_recipe(db, recipe_id) for recipe_id in recipe_ids]
     return recipes
+
+def get_all_ingredients_with_location(db):
+    conn = db()
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT
+                i.name as ingredient,
+                sl.name as location
+        FROM ingredients i
+        LEFT JOIN store_locations sl 
+        ON sl.id = i.location_id;
+    """)
+    ingredients = cur.fetchall()
+    cur.close()
+
+    ingredients_map = {ingredients[i][0]: ingredients[i][1] for i in range(len(ingredients))}
+
+    return ingredients_map
